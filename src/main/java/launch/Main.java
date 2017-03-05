@@ -79,7 +79,12 @@ public class Main {
         } else {
             resourceSet = new EmptyResourceSet(resources);
         }
+
+
+
         resources.addPreResources(resourceSet);
+        System.err.println("AAAAA" +resources.getResource( "welcome-file-list"));
+
         ctx.setResources(resources);
 
         tomcat.start();
