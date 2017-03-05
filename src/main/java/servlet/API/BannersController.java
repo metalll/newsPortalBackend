@@ -2,8 +2,9 @@ package servlet.API;
 
 import DBControllers.DBBanners;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.Banners;
-import org.omg.CORBA.Request;
+import model.ModelForJSONBorn;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by NSD on 05.03.17.
@@ -33,7 +32,7 @@ public class BannersController extends HttpServlet {
         List<Banners> bannerss = DBBanners.getInstance().QueryAll();
         Gson gson = new Gson();
 
-        retVal = gson.toJson(bannerss);
+        retVal = gson.toJson(new ModelForJSONBorn<Banners>(bannerss,bannerss.size()));
 
 
         //return text;
@@ -48,6 +47,7 @@ public class BannersController extends HttpServlet {
     }
 
 
+    //mysql://c0arc3m3i445zhr4:wcz4b1uyh3qavoe3@y0nkiij6humroewt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/gh6jsy7w2kl6l0x6
     //todo decription POST /* create if not exist else update exist */ NO Query !!! (ибо нах нада)
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

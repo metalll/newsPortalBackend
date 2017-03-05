@@ -10,7 +10,9 @@ public class NSDConstats {
 
     public static String getDBURL() {
         if(DBURL == null){
-            DBURL = System.getenv(""); //todo DBURL
+
+            String dbUri = System.getenv("CLEARDB_DATABASE_URL");
+            DBURL = "jdbc:" + dbUri;
 
         }
 
