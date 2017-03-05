@@ -2,7 +2,6 @@ package model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * Created by NSD on 17.02.17.
