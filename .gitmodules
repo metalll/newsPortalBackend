@@ -1,0 +1,3 @@
+[submodule "src/main/webapp/NewsPortal"]
+	path = src/main/webapp/NewsPortal
+	url = https://github.com/JohnBerinda/NewsPortal.git
