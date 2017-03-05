@@ -1,11 +1,20 @@
 package servlet.API;
 
+import DBControllers.DBBanners;
+import com.google.gson.Gson;
+import model.Banners;
+import org.omg.CORBA.Request;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by NSD on 05.03.17.
@@ -19,7 +28,23 @@ public class BannersController extends HttpServlet {
 
     //todo description GET /* getJSON + maybe Query?!? */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+
+        String retVal  = "";
+        List<Banners> bannerss = DBBanners.getInstance().QueryAll();
+        Gson gson = new Gson();
+
+        retVal = gson.toJson(bannerss);
+
+
+        //return text;
+
+
+        resp.setStatus(HttpServletResponse.SC_OK);
+        PrintWriter out = resp.getWriter();
+        out.write(retVal);
+        out.flush();
+        out.close();
+
     }
 
 
