@@ -50,7 +50,7 @@ public class Main {
         }
 
         tomcat.setPort(Integer.valueOf(webPort));
-        File webContentFolder = new File(root.getAbsolutePath(), "src/main/webapp/NewsPortal/");
+        File webContentFolder = new File(root.getAbsolutePath(), "src/main/webapp/");
         if (!webContentFolder.exists()) {
             webContentFolder = Files.createTempDirectory("default-doc-base").toFile();
         }
@@ -83,7 +83,7 @@ public class Main {
 
 
         resources.addPreResources(resourceSet);
-        System.err.println("AAAAA" +resources.getResource( "welcome-file-list"));
+      //  System.err.println("AAAAA" +resources.getResource( "welcome-file-list"));
 
         ctx.setResources(resources);
 
