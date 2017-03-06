@@ -1,11 +1,18 @@
 package servlet.API;
 
+import DBControllers.DBService;
+import com.google.gson.Gson;
+import model.Service;
+import model.ModelForJSONBorn;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by NSD on 05.03.17.
@@ -18,7 +25,21 @@ public class ServiceController extends HttpServlet {
 
     //todo description GET /* getJSON + maybe Query?!? */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        String retVal  = "";
+        List<Service> Services = DBService.getInstance().QueryAll();
+        Gson gson = new Gson();
+
+        retVal = gson.toJson(new ModelForJSONBorn<Service>(Services,Services.size()));
+
+
+        //return text;
+
+
+        resp.setStatus(HttpServletResponse.SC_OK);
+        PrintWriter out = resp.getWriter();
+        out.write(retVal);
+        out.flush();
+        out.close();
     }
 
 
