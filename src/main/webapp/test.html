@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+
+    $.ajax({
+        url: "http://blooming-tundra-50496.herokuapp.com/API/Banner",
+        type: "GET",
+
+        success: function (data) {
+
+            var jsonEx = JSON.parse(data);
+            console.log(jsonEx);
+
+        }
+
+    });
+
+
+</script>
+
+</html>
