@@ -13,17 +13,17 @@ public class SliderView {
     public SliderView(){}
 
     @DatabaseField(generatedId = true)
-    private String id ;
+    private int id ;
     @DatabaseField
     private String text;
     @DatabaseField
     private String image;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

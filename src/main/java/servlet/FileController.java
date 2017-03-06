@@ -44,6 +44,9 @@ public class FileController extends HttpServlet {
 
         String path = DBKeyCacheElem.getInstance().getValueForKey(key);
         System.out.print(  "fvergege"+  path + "      fwefwefwefwe");
+
+
+
         File file = new File(path);
 
 
