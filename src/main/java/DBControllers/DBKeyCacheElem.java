@@ -53,6 +53,9 @@ public class DBKeyCacheElem {
         try {
             dao.create(banner);
 
+
+            dao.getConnectionSource().close();
+
         }catch (Exception e){  }
     }
 
