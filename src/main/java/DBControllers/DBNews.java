@@ -4,6 +4,7 @@ import NSD.NSDConstats;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import model.Banners;
 import model.News;
 import model.News;
 
@@ -61,6 +62,13 @@ public class DBNews {
             System.out.print(dao.toString());
             List<News> list = dao.queryForAll();
             dao.getConnectionSource().close();
+
+            for (News item : list) {
+                String img = item.getImage();
+                String imgLink = NSDConstats.HOST + "/file?key=" + img;
+                item.setImage(imgLink);
+
+            }
 
             return list;
 

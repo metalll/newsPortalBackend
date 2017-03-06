@@ -63,6 +63,7 @@ public class DBComments {
 
 
 
+
             dao.getConnectionSource().close();
 
             return list;

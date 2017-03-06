@@ -60,6 +60,15 @@ public class DBBanners {
             List<Banners> list = dao.queryForAll();
             dao.getConnectionSource().close();
 
+            for (Banners item : list) {
+                String img = item.getImage();
+                String imgLink = NSDConstats.HOST + "/file?key=" + img;
+                item.setImage(imgLink);
+
+            }
+
+
+
             return list;
 
 

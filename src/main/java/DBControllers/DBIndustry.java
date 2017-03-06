@@ -4,6 +4,8 @@ import NSD.NSDConstats;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.query.In;
+import model.Banners;
 import model.Industry;
 import model.Industry;
 
@@ -61,6 +63,13 @@ public class DBIndustry {
             System.out.print(dao.toString());
             List<Industry> list = dao.queryForAll();
             dao.getConnectionSource().close();
+
+            for (Industry item : list) {
+                String img = item.getImage();
+                String imgLink = NSDConstats.HOST + "/file?key=" + img;
+                item.setImage(imgLink);
+
+            }
 
             return list;
 
