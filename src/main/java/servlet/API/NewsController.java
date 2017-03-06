@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by NSD on 05.03.17.
  */
 
-@WebServlet(name = "NewsController", urlPatterns = {"/API/NewsController"})
+@WebServlet(name = "NewsController", urlPatterns = {"/API/News"})
 public class NewsController extends HttpServlet {
 
     @Override

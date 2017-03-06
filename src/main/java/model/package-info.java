@@ -11,8 +11,11 @@ package model;
 Скелет для библиотеки GSON,Databasы
 //todo Controllers
 Каждый класс модели имеет одноименный конроллер (ModelName + Controller f.e News -> NewsController)
-
-*
+//todo DB
+Классы аннотированы по ormLite lib
+//todo Исключения :
+* ModelForJSONBorn - по факту структура с массивом значений и количеством
+* значений для удобного представления в виде JSON {values:[{.....}],values.count:3423}
 *
 *
 *

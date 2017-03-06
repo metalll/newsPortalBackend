@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 
-@WebServlet(name= "BannerController", urlPatterns = {"/API/BannerController"} )
+@WebServlet(name= "BannerController", urlPatterns = {"/API/Banner"} )
 public class BannersController extends HttpServlet {
 
     @Override

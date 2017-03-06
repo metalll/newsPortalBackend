@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by NSD on 05.03.17.
  */
 
-@WebServlet(name = "ServiceController",urlPatterns = {"/API/ServiceController"})
+@WebServlet(name = "ServiceController",urlPatterns = {"/API/Service"})
 public class ServiceController extends HttpServlet {
 
     @Override

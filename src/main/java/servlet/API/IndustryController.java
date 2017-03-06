@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by NSD on 05.03.17.
  */
-@WebServlet(name = "IndustryController", urlPatterns = {"/API/IndustryController"})
+@WebServlet(name = "IndustryController", urlPatterns = {"/API/Industry"})
 
 public class IndustryController extends HttpServlet {
 

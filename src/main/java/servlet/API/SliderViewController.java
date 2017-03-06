@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 
 
-@WebServlet(name = "SliderViewController", urlPatterns = {"/API/SliderViewController"})
+@WebServlet(name = "SliderViewController", urlPatterns = {"/API/SliderView"})
 public class SliderViewController extends HttpServlet{
 
 
