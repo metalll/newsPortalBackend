@@ -36,7 +36,7 @@ public class FileController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(UPLOAD_DIRECTORY == null){
-            UPLOAD_DIRECTORY = getServletContext().getRealPath("/") + "upload";
+            UPLOAD_DIRECTORY = "/app/" + "upload";
         }
         String key = req.getParameterMap().get(KEYNAME)[0];
         String path = DBKeyCacheElem.getInstance().getValueForKey(key);
@@ -79,7 +79,7 @@ public class FileController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(UPLOAD_DIRECTORY == null){
 
-            UPLOAD_DIRECTORY = "/" + "upload";
+            UPLOAD_DIRECTORY = "/app/" + "upload";
 
         }
 
