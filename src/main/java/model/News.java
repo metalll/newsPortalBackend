@@ -14,7 +14,7 @@ public class News {
     @DatabaseField(generatedId = true)
     private int id;
     @DatabaseField
-    private String type; //HOT||NEW
+    private String type; //HOT||NEW||SIMPLE
     @DatabaseField
     private String image;
     @DatabaseField

@@ -13,7 +13,7 @@ public class KeyCacheElem {
     @DatabaseField
     private String key;
     @DatabaseField
-    private  String value;
+    private  String valueOfKey;
 
 
     public int getId() {
@@ -32,11 +32,12 @@ public class KeyCacheElem {
         this.key = key;
     }
 
-    public String getValue() {
-        return value;
+
+    public String getValueOfKey() {
+        return valueOfKey;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValueOfKey(String valueOfKey) {
+        this.valueOfKey = valueOfKey;
     }
 }
