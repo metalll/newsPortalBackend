@@ -14,9 +14,12 @@ import java.util.List;
  */
 public class DBComments {
 
+
     private static volatile DBComments instance;
 
     private Dao<Comments,String> dao;
+
+
 
     public static DBComments getInstance() {
         DBComments localInstance = instance;
@@ -33,8 +36,15 @@ public class DBComments {
 
     private DBComments(){
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
             dao = DaoManager.createDao(new JdbcConnectionSource(NSDConstats.getDBURL()),Comments.class);
-        }catch (Exception e){}
+        }catch (Exception e){e.printStackTrace();}
 
     }
 
@@ -48,9 +58,16 @@ public class DBComments {
 
     public List<Comments> QueryAll(){
         try {
-            return dao.queryForAll();
+            System.out.print(dao.toString());
+            List<Comments> list = dao.queryForAll();
+            dao.getConnectionSource().close();
+
+            return list;
+
+
         }
         catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }

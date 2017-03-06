@@ -5,6 +5,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import model.SliderView;
+import model.SliderView;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,9 +14,12 @@ import java.util.List;
  * Created by NSD on 05.03.17.
  */
 public class DBSliderView {
+
     private static volatile DBSliderView instance;
 
     private Dao<SliderView,String> dao;
+
+
 
     public static DBSliderView getInstance() {
         DBSliderView localInstance = instance;
@@ -32,8 +36,15 @@ public class DBSliderView {
 
     private DBSliderView(){
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
             dao = DaoManager.createDao(new JdbcConnectionSource(NSDConstats.getDBURL()),SliderView.class);
-        }catch (Exception e){}
+        }catch (Exception e){e.printStackTrace();}
 
     }
 
@@ -47,9 +58,16 @@ public class DBSliderView {
 
     public List<SliderView> QueryAll(){
         try {
-            return dao.queryForAll();
+            System.out.print(dao.toString());
+            List<SliderView> list = dao.queryForAll();
+            dao.getConnectionSource().close();
+
+            return list;
+
+
         }
         catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }

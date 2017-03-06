@@ -5,6 +5,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import model.Industry;
+import model.Industry;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,9 +14,12 @@ import java.util.List;
  * Created by NSD on 05.03.17.
  */
 public class DBIndustry {
+
     private static volatile DBIndustry instance;
 
     private Dao<Industry,String> dao;
+
+
 
     public static DBIndustry getInstance() {
         DBIndustry localInstance = instance;
@@ -32,8 +36,15 @@ public class DBIndustry {
 
     private DBIndustry(){
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
             dao = DaoManager.createDao(new JdbcConnectionSource(NSDConstats.getDBURL()),Industry.class);
-        }catch (Exception e){}
+        }catch (Exception e){e.printStackTrace();}
 
     }
 
@@ -47,9 +58,16 @@ public class DBIndustry {
 
     public List<Industry> QueryAll(){
         try {
-            return dao.queryForAll();
+            System.out.print(dao.toString());
+            List<Industry> list = dao.queryForAll();
+            dao.getConnectionSource().close();
+
+            return list;
+
+
         }
         catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }
