@@ -39,8 +39,11 @@ public class FileController extends HttpServlet {
             UPLOAD_DIRECTORY = "/tmp/" + "upload";
         }
         String key = req.getParameterMap().get(KEYNAME)[0];
+
+        System.out.print("Mmmmmmmmmmmmmmm       " + key );
+
         String path = DBKeyCacheElem.getInstance().getValueForKey(key);
-        System.out.print(  "fvergege"+ path + "      fwefwefwefwe");
+        System.out.print(  "fvergege"+  path + "      fwefwefwefwe");
         File file = new File(path);
 
 
