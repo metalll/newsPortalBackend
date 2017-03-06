@@ -11,7 +11,7 @@ public class NSDConstats {
     public static String getDBURL() {
         if(DBURL == null){
 
-         DBURL = "jdbc:mysql://us-cdbr-iron-east-04.cleardb.net:3306/heroku_4574124234c67bc?reconnect=true";
+         DBURL = "jdbc:mysql://us-cdbr-iron-east-04.cleardb.net:3306/heroku_4574124234c67bc?reconnect=true&user=bae2125aeae8cb&password=0a4755709189264";
         }
 
         return DBURL;
