@@ -51,8 +51,8 @@ public class DBKeyCacheElem {
     //CRUD
     public void AddOrUpdate(KeyCacheElem banner) {
         try {
-            dao.createOrUpdate(banner);
-            dao.commit(dao.getConnectionSource().getReadWriteConnection());
+            dao.create(banner);
+
         }catch (Exception e){  }
     }
 
