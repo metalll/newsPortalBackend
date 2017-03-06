@@ -17,6 +17,8 @@ public class DBBanners {
 
     private Dao<Banners,String> dao;
 
+
+
     public static DBBanners getInstance() {
         DBBanners localInstance = instance;
         if (localInstance == null) {
@@ -31,6 +33,13 @@ public class DBBanners {
     }
 
     private DBBanners(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
         try {
             dao = DaoManager.createDao(new JdbcConnectionSource(NSDConstats.getDBURL()),Banners.class);
         }catch (Exception e){e.printStackTrace();}
