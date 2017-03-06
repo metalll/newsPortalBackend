@@ -57,9 +57,10 @@ public class DBBanners {
     public List<Banners> QueryAll(){
         try {
             System.out.print(dao.toString());
+            List<Banners> list = dao.queryForAll();
+            dao.getConnectionSource().close();
 
-
-            return dao.queryForAll();
+            return list;
 
 
         }
