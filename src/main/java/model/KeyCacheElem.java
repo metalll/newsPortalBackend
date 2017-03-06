@@ -10,7 +10,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class KeyCacheElem {
 
-    @DatabaseField
+    @DatabaseField(id = true)
     private String key;
     @DatabaseField
     private  String valueOfKey;

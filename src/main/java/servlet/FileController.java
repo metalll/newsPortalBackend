@@ -42,8 +42,12 @@ public class FileController extends HttpServlet {
 
         System.out.print("Mmmmmmmmmmmmmmm       " + key );
 
-        String path = DBKeyCacheElem.getInstance().getValueForKey(key);
-        System.out.print(  "fvergege"+  path + "      fwefwefwefwe");
+        String path = "";
+
+
+        path = DBKeyCacheElem.getInstance().getValueForKey(key);
+
+
 
 
 
@@ -53,7 +57,7 @@ public class FileController extends HttpServlet {
         resp.setHeader("Content-Disposition", "inline; filename=\"..." + req.hashCode() + ":......+ "+ ".............-1 + " + " -1\".exe");
         resp.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         resp.setHeader("Content-Length", String.valueOf(file.length()));
-        if (!path.equals("") && path != null) {
+        if (!path.equals("")) {
             OutputStream out = resp.getOutputStream();
             FileInputStream in = new FileInputStream(path);
             byte[] buffer = new byte[4096];
@@ -72,6 +76,8 @@ public class FileController extends HttpServlet {
             out.flush();
 
         }
+
+
 
 
 

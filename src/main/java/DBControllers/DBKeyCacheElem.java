@@ -56,16 +56,23 @@ public class DBKeyCacheElem {
 
             dao.getConnectionSource().close();
 
+
         }catch (Exception e){  }
     }
 
     public String getValueForKey(String key){
 
         try {
-            return dao.queryForId(key).getValueOfKey() ;
+            String retVal = dao.queryForId(key).getValueOfKey();
+            dao.getConnectionSource().close();
+
+            return  retVal;
+
+
         } catch (SQLException e) {
+
+           e.printStackTrace();
             return null;
-           // e.printStackTrace();
         }
 
     }
