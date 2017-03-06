@@ -56,7 +56,7 @@ public class DBBanners {
 
     public List<Banners> QueryAll(){
         try {
-            System.out.print("dao is null? ");
+            System.out.print(dao.toString());
 
 
             return dao.queryForAll();
