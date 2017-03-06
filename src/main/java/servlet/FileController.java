@@ -40,7 +40,7 @@ public class FileController extends HttpServlet {
         }
         String key = req.getParameterMap().get(KEYNAME)[0];
         String path = DBKeyCacheElem.getInstance().getValueForKey(key);
-
+        System.out.print(  "fvergege"+ path + "      fwefwefwefwe");
         File file = new File(path);
 
 
@@ -151,7 +151,7 @@ public class FileController extends HttpServlet {
                 KeyCacheElem sharedElement = new KeyCacheElem();
                 sharedElement.setKey(KEY);
                 sharedElement.setValueOfKey(PATH);
-
+                System.out.print(sharedElement);
                 DBKeyCacheElem.getInstance().AddOrUpdate(sharedElement);
 
 
