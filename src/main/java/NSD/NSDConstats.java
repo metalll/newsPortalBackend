@@ -11,9 +11,7 @@ public class NSDConstats {
     public static String getDBURL() {
         if(DBURL == null){
 
-            String dbUri = System.getenv("CLEARDB_DATABASE_URL");
-            DBURL = "jdbc:" + dbUri;
-
+         DBURL = "jdbc:mysql://us-cdbr-iron-east-04.cleardb.net:3306/heroku_4574124234c67bc?reconnect=true";
         }
 
         return DBURL;
