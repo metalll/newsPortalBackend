@@ -50,6 +50,7 @@ public class DBBanners {
             return dao.queryForAll();
         }
         catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }

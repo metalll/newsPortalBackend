@@ -30,7 +30,7 @@ public class BannersController extends HttpServlet {
 
         String retVal  = "";
         List<Banners> bannerss = DBBanners.getInstance().QueryAll();
-        Gson gson = new Gson();
+         Gson gson = new Gson();
 
         retVal = gson.toJson(new ModelForJSONBorn<Banners>(bannerss,bannerss.size()));
 
