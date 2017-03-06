@@ -158,6 +158,10 @@ $.ajax({
 });
 
 
+function getUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);});
+
+}
 
 
 
@@ -187,11 +191,19 @@ function uploadPhoto() {
     $("#avatar-input").click();
 }
 
+
+
+
+
 function upload() {
+
+    var UUIDImg = getUUID();
+
+
     var form = new FormData();
     var image = $('#avatar-input').prop('files')[0];
 
-    form.append('key','UUID_Key');
+    form.append('key',UUIDImg);
     form.append('image', image);
 
     $.ajax({
@@ -204,13 +216,14 @@ function upload() {
         data: form,
         success: function (data) {
 
+            if(data==true) {
 
 
-            var container = document.getElementById('img_container');
-            container.innerHTML = '<img src="http://blooming-tundra-50496.herokuapp.com/file?key=UUID_Key">';
+                var container = document.getElementById('img_container');
+                container.innerHTML = '<img src="http://blooming-tundra-50496.herokuapp.com/file?key=' + UUIDImg + '">';
 
 
-
+            }
 
 
 

@@ -40,17 +40,8 @@ public class FileController extends HttpServlet {
         }
         String key = req.getParameterMap().get(KEYNAME)[0];
 
-        System.out.print("Mmmmmmmmmmmmmmm       " + key );
-
         String path = "";
-
-
         path = DBKeyCacheElem.getInstance().getValueForKey(key);
-
-
-
-
-
         File file = new File(path);
 
 
@@ -90,10 +81,7 @@ public class FileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(UPLOAD_DIRECTORY == null){
-
-            UPLOAD_DIRECTORY = "/tmp/" + "upload";
-
-        }
+            UPLOAD_DIRECTORY = "/tmp/" + "upload";}
 
         String PATH = null;
         String KEY = null;
@@ -163,9 +151,14 @@ public class FileController extends HttpServlet {
                 KeyCacheElem sharedElement = new KeyCacheElem();
                 sharedElement.setKey(KEY);
                 sharedElement.setValueOfKey(PATH);
-                System.out.print(sharedElement);
+                //System.out.print(sharedElement);
                 DBKeyCacheElem.getInstance().AddOrUpdate(sharedElement);
 
+                response.setStatus(HttpServletResponse.SC_OK);
+                PrintWriter out = response.getWriter();
+                out.write(String.valueOf(true));
+                out.flush();
+                out.close();
 
 
             }
