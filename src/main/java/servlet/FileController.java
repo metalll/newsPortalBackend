@@ -79,7 +79,7 @@ public class FileController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(UPLOAD_DIRECTORY == null){
 
-            UPLOAD_DIRECTORY = "~/" + "upload";
+            UPLOAD_DIRECTORY = "/" + "upload";
 
         }
 
