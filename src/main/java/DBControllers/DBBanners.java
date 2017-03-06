@@ -33,7 +33,7 @@ public class DBBanners {
     private DBBanners(){
         try {
             dao = DaoManager.createDao(new JdbcConnectionSource(NSDConstats.getDBURL()),Banners.class);
-        }catch (Exception e){}
+        }catch (Exception e){e.printStackTrace();}
 
     }
 
@@ -47,7 +47,12 @@ public class DBBanners {
 
     public List<Banners> QueryAll(){
         try {
+            System.out.print("dao is null? ");
+
+
             return dao.queryForAll();
+
+
         }
         catch (SQLException e) {
             e.printStackTrace();
