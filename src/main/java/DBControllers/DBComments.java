@@ -60,6 +60,9 @@ public class DBComments {
         try {
             System.out.print(dao.toString());
             List<Comments> list = dao.queryForAll();
+
+
+
             dao.getConnectionSource().close();
 
             return list;

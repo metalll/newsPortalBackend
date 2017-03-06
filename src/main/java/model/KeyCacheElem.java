@@ -1,5 +1,6 @@
 package model;
 
+import DBControllers.DBKeyCacheElem;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -8,21 +9,16 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 @DatabaseTable
 public class KeyCacheElem {
-    @DatabaseField(generatedId = true)
-    private int id;
+
     @DatabaseField
     private String key;
     @DatabaseField
     private  String valueOfKey;
 
+    public KeyCacheElem(){}
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public String getKey() {
         return key;

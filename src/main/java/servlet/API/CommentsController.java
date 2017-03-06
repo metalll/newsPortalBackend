@@ -27,6 +27,15 @@ public class CommentsController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String retVal  = "";
         List<Comments> Commentss = DBComments.getInstance().QueryAll();
+
+        for(Comments comment : Commentss){
+
+
+
+
+        }
+
+
         Gson gson = new Gson();
 
         retVal = gson.toJson(new ModelForJSONBorn<Comments>(Commentss,Commentss.size()));
