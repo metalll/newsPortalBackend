@@ -79,13 +79,25 @@ public class DBBanners {
         }
     }
 
+    public Banners ElementByID(String id){
+        Banners retVal = null;
+        try {
+           retVal = dao.queryForId(id);
+           dao.getConnectionSource().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return retVal;
+    }
+
+    public Banners ElementByID(int id){
+        return ElementByID(String.valueOf(id));
+    }
+
 
     public void DeleteForID(int id){
-        try {
-            dao.deleteById(String.valueOf(id));
-        }catch (Exception e){
-
-        }
+       DeleteForID(String.valueOf(id));
     }
 
     public void DeleteForID(String id) { //simple override

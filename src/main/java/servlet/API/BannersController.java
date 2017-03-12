@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by NSD on 05.03.17.
@@ -27,14 +29,72 @@ public class BannersController extends HttpServlet {
 
     //todo description GET /* getJSON + maybe Query?!? */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = null;
+        String q = null;
 
-        String retVal  = "";
+
+        Map<String, String[]> paramMap = req.getParameterMap();
+        //todo get and check query params
+        try {
+            id = paramMap.get("id")[0];
+        } catch (NullPointerException ex) {
+            id = null;
+        }
+
+        try {
+            q = paramMap.get("q")[0];
+        } catch (NullPointerException ex) {
+            q = null;
+        }
+        //todo end check
+
+
+        //todo Mark switch quering
+
+
+        //todo if has two params return server error
+        if (id != null && q != null) {
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            PrintWriter out = resp.getWriter();
+            out.write("id and q params don't сompatible. \n Server error!!! ");
+            out.flush();
+            out.close();
+            return;
+        }
+
+
+        String retVal = "";
+
+
+        if (id == null && q == null){
         List<Banners> bannerss = DBBanners.getInstance().QueryAll();
-         Gson gson = new Gson();
+        Gson gson = new Gson();
+        retVal = gson.toJson(new ModelForJSONBorn<Banners>(bannerss, bannerss.size()));
+        }
+        else {
 
-        retVal = gson.toJson(new ModelForJSONBorn<Banners>(bannerss,bannerss.size()));
+            if(id!=null){
+                Banners banner = DBBanners.getInstance().ElementByID(id);
+                List<Banners> bannerss = new ArrayList<Banners>();
+                bannerss.add(banner);
+                Gson gson = new Gson();
+                retVal = gson.toJson(new ModelForJSONBorn<Banners>(bannerss, bannerss.size()));
+
+            }
+
+            if(q!=null){
+                //todo this maybe don't work
+
+                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                PrintWriter out = resp.getWriter();
+                out.write("I'm sorry but this feature don't work now!");
+                out.flush();
+                out.close();
+                return;
+            }
 
 
+        }
         //return text;
 
 
