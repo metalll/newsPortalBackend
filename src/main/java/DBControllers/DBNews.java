@@ -63,6 +63,7 @@ public class DBNews {
             List<News> list = dao.queryForAll();
             dao.getConnectionSource().close();
 
+
             for (News item : list) {
                 String img = item.getImage();
                 String imgLink = NSDConstats.HOST + "/file?key=" + img;
