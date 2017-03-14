@@ -4,11 +4,14 @@ import NSD.NSDConstats;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import model.Banners;
 import model.News;
 import model.News;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,9 +48,17 @@ public class DBNews {
 
         try {
             dao = DaoManager.createDao(new JdbcConnectionSource(NSDConstats.getDBURL()),News.class);
-        }catch (Exception e){e.printStackTrace();}
+            if(!dao.isTableExists()){
+                TableUtils.createTable(dao.getConnectionSource(),News.class);
+            }
+
+
+       }catch (Exception e){e.printStackTrace();}
+
+
 
     }
+
 
 
     //CRUD
@@ -77,7 +88,7 @@ public class DBNews {
         }
         catch (SQLException e) {
             e.printStackTrace();
-            return null;
+          return new ArrayList<News>();
         }
     }
 
