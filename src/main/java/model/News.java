@@ -20,7 +20,7 @@ public class News {
     @DatabaseField
     private String numberOfViewed;
     @DatabaseField
-    private String headerDecription;
+    private String headerDescription;
     @DatabaseField
     private String minimalDescription;
     @DatabaseField
@@ -60,13 +60,7 @@ public class News {
         this.numberOfViewed = numberOfViewed;
     }
 
-    public String getHeaderDecription() {
-        return headerDecription;
-    }
 
-    public void setHeaderDecription(String headerDecription) {
-        this.headerDecription = headerDecription;
-    }
 
     public String getMinimalDescription() {
         return minimalDescription;
@@ -82,5 +76,13 @@ public class News {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getHeaderDescription() {
+        return headerDescription;
+    }
+
+    public void setHeaderDescription(String headerDescription) {
+        this.headerDescription = headerDescription;
     }
 }
