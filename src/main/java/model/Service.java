@@ -23,6 +23,7 @@ public class Service {
     private String content; //html;
 
 
+
     public int getId() {
         return id;
     }
