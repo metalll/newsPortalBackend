@@ -23,6 +23,7 @@ public class ServiceController extends HttpServlet {
 
     @Override
 
+
     //todo description GET /* getJSON + maybe Query?!? */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String retVal  = "";
