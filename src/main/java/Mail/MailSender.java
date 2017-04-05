@@ -30,7 +30,7 @@ public class MailSender {
             synchronized (DBBanners.class) {
                 localInstance = instance;
                 if (localInstance == null) {
-                    instance = localInstance = new MailSender("linuxoid6666@gmail.com","qwerty1234q");
+                    instance = localInstance = new MailSender("pbezpeka.web.service@gmail.com","QazWsx321");
                 }
             }
         }
