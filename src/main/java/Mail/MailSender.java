@@ -56,6 +56,9 @@ public class MailSender {
             props.put("mail.smtp.port", "465");
            props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 
+
+
+
         }
 
         public void send(String subject, String text, String fromEmail, String toEmail){
