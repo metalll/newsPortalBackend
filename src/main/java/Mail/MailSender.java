@@ -62,11 +62,7 @@ public class MailSender {
         }
 
         public void send(String subject, String text, String fromEmail, String toEmail){
-            Session session = Session.getInstance(props, new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(username, password);
-                }
-            });
+            Session session = Session.getInstance(props, new GmailAuthentificator(username,password));
 
             try {
                 Message message = new MimeMessage(session);
