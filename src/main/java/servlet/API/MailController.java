@@ -19,7 +19,7 @@ public class MailController extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Map<String,String[]> paramMap = req.getParameterMap();
 
@@ -27,7 +27,15 @@ public class MailController extends HttpServlet {
         String message = paramMap.get("message")[0];
 
 
-        MailSender.getInstance().send("Сайт",message,"linuxoid6666@gmail.com",toEmail);
+        String theme = null;
+        try {
+            theme = paramMap.get("theme")[0];
+        }catch (NullPointerException e){
+            theme=null;
+        }
+
+
+        MailSender.getInstance().send(theme==null?"Ниуккцпб":theme,message,"linuxoid6666@gmail.com",toEmail);
 
 
 
