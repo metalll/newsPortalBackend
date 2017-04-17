@@ -20,7 +20,6 @@ public class DBSliderView {
 
 
 
-
     public static DBSliderView getInstance() {
         DBSliderView localInstance = instance;
         if (localInstance == null) {
