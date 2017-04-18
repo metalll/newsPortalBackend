@@ -36,6 +36,7 @@ public class DBSliderView {
     private DBSliderView(){
         try {
 
+
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
