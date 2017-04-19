@@ -29,6 +29,7 @@ public class DBNews {
         DBNews localInstance = instance;
         if (localInstance == null) {
             synchronized (DBNews.class) {
+
                 localInstance = instance;
                 if (localInstance == null) {
                     instance = localInstance = new DBNews();
