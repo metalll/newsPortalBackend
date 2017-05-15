@@ -35,7 +35,7 @@ public class ServiceController extends HttpServlet {
 
         //return text;
 
-
+        resp.setCharacterEncoding("UTF-8");
         resp.setStatus(HttpServletResponse.SC_OK);
         PrintWriter out = resp.getWriter();
         out.write(retVal);
