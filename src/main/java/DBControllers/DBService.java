@@ -62,12 +62,12 @@ public class DBService {
             System.out.print(dao.toString());
             List<Service> list = dao.queryForAll();
             dao.getConnectionSource().close();
-            for (Service item : list) {
-                String img = item.getImage();
-                String imgLink = NSDConstats.HOST + "/file?key=" + img;
-                item.setImage(imgLink);
-
-            }
+//            for (Service item : list) {
+//                String img = item.getImage();
+//                String imgLink = NSDConstats.HOST + "/file?key=" + img;
+//                item.setImage(imgLink);
+//
+//            }
             return list;
 
 
