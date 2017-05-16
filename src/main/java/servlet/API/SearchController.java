@@ -52,7 +52,7 @@ public class SearchController extends HttpServlet {
         for(Service item : queryServicesList){
 
 
-            if(!item.getHeaderText().toLowerCase().contains(query.toLowerCase())){
+            if(item.getHeaderText().toLowerCase().contains(query.toLowerCase())){
                 servicesQueryResult.add(item);
             }
 
