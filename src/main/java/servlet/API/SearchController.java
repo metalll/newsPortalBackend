@@ -67,7 +67,6 @@ public class SearchController extends HttpServlet {
 
         resp.setStatus(HttpServletResponse.SC_OK);
         PrintWriter out = resp.getWriter();
-
         out.write(result);
         out.flush();
         out.close();
