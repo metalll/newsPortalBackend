@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -47,21 +48,19 @@ public class SearchController extends HttpServlet {
 
 
         List<Service> queryServicesList = DBService.getInstance().QueryAll();
-
+        List<Service> servicesQueryResult = new ArrayList<Service>();
         for(Service item : queryServicesList){
 
 
             if(!item.getHeaderText().toLowerCase().contains(query.toLowerCase())){
-
-                queryServicesList.remove(item);
-
+                servicesQueryResult.add(item);
             }
 
         }
 
 
         Gson gson = new Gson();
-        String result = gson.toJson(queryServicesList);
+        String result = gson.toJson(servicesQueryResult);
 
 
 
