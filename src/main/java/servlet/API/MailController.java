@@ -40,13 +40,11 @@ try {
     // if basic sender dont work deserialise form
     Map<String,String[]> paramMap = req.getParameterMap();
 
-
-
     String icon_prefix = paramMap.get("icon_prefix")[0];
     String icon_telephone = paramMap.get("icon_telephone")[0];
     String call_theme_select = paramMap.get("call_theme_select")[0];
 
-
+    MailSender.getInstance().send("Обратный звонок тест" , "Имя : "+icon_prefix + "\n Телефон: " + icon_telephone + "\n Что интересует : "+ call_theme_select , "pbezpeka.web.service@gmail.com", "pbezpekamanager@mail.ru");
 
 
 }
