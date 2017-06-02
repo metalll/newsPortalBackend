@@ -80,7 +80,7 @@ public class MailSender {
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail)); message.setSender(new InternetAddress("naumen.customs@mail.ru"));
                 Transport.send(message);
 
-                Transport.send(message);
+             //   Transport.send(message);
             } catch (MessagingException e) {
                 throw new RuntimeException(e);
             }
