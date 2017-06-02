@@ -74,6 +74,7 @@ public class MailSender {
 
 
                 MimeMessage message = new MimeMessage(session);
+                message.setFrom(InternetAddress.parse(username)[0]);
                 message.setSubject(subject);
                 message.setText(text);
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail)); message.setSender(new InternetAddress("naumen.customs@mail.ru"));
