@@ -71,19 +71,13 @@ public class MailSender {
             Session session = Session.getInstance(props, new GmailAuthentificator(username,password));
 
             try {
-                Message message = new MimeMessage(session);
-                //от кого
-                message.setFrom(new InternetAddress(fromEmail));
-                //кому
-                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-                //Заголовок письма
+
+
+                MimeMessage message = new MimeMessage(session);
                 message.setSubject(subject);
-                //Содержимое
                 message.setText(text);
-
-                //Отправляем сообщение
-
-
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail)); message.setSender(new InternetAddress("naumen.customs@mail.ru"));
+                Transport.send(message);
 
                 Transport.send(message);
             } catch (MessagingException e) {
