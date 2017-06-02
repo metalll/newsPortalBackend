@@ -72,7 +72,7 @@ public class MailSender {
             try {
                 Message message = new MimeMessage(session);
                 //от кого
-                message.setFrom(new InternetAddress(fromEmail));
+                message.setFrom(new InternetAddress(this.username));
                 //кому
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
                 //Заголовок письма
@@ -81,7 +81,15 @@ public class MailSender {
                 message.setText(text);
 
                 //Отправляем сообщение
+
+                Transport transport = session.getTransport("smtp");
+                transport.connect("smtp.gmail.com", this.username, this.password);
+                message.saveChanges();
                 Transport.send(message);
+                transport.close();
+
+
+
             } catch (MessagingException e) {
                 throw new RuntimeException(e);
             }
