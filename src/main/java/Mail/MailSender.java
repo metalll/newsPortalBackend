@@ -47,7 +47,7 @@ public class MailSender {
        private MailSender(String username, String password) {
             this.username = username;
             this.password = password;
-
+           props = new Properties();
            props.setProperty("mail.debug", "true");
            props.setProperty("javax.net.ssl.debug", "all");
            props.setProperty("mail.smtp.host", "smtp.mail.ru");
