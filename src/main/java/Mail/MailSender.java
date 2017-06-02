@@ -30,7 +30,7 @@ public class MailSender {
             synchronized (DBBanners.class) {
                 localInstance = instance;
                 if (localInstance == null) {
-                    instance = localInstance = new MailSender("pbezpeka.web.service@gmail.com","QazWsx321");
+                    instance = localInstance = new MailSender("pbezpekaweb.service@mail.ru","QazWsx321");
                 }
             }
         }
@@ -48,19 +48,21 @@ public class MailSender {
             this.username = username;
             this.password = password;
 
-            props = new Properties();
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.socketFactory.port", "465");
-            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.port", "465");
-
-           props.put("mail.smtp.starttls.enable", "true");
-
-           props.put("mail.smtp.user", username);
-           props.put("mail.smtp.password", password);
-
-           props.put("mail.debug", "true");
+           props.setProperty("mail.debug", "true");
+           props.setProperty("javax.net.ssl.debug", "all");
+           props.setProperty("mail.smtp.host", "smtp.mail.ru");
+           props.setProperty("mail.smtp.port", "465");
+           props.setProperty("mail.smtp.auth", "true");
+           props.setProperty("mail.smtp.connectiontimeout", "60000");
+           props.setProperty("mail.smtp.timeout", "60000");
+           props.setProperty("mail.transport.protocol", "smtps");
+           props.setProperty("mail.smtp.socketFactory.port", "465");
+           props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+           props.setProperty("mail.smtp.socketFactory.fallback", "false");
+           props.setProperty("mail.smtp.ssl.enable", "true");
+           props.setProperty("mail.mime.charset", "UTF-8");
+           props.setProperty("java.security.debug", "all");
+           props.setProperty("logging.properties", "all");
 
 
         }
