@@ -77,7 +77,7 @@ public class MailSender {
                 message.setFrom(InternetAddress.parse(username)[0]);
                 message.setSubject(subject);
                 message.setText(text);
-                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail)); message.setSender(new InternetAddress("naumen.customs@mail.ru"));
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail)); message.setSender(new InternetAddress(username));
                 Transport.send(message);
 
              //   Transport.send(message);

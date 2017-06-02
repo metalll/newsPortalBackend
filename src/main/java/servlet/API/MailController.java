@@ -44,7 +44,7 @@ try {
     String icon_telephone = paramMap.get("icon_telephone")[0];
     String call_theme_select = paramMap.get("call_theme_select")[0];
 
-    MailSender.getInstance().send("Обратный звонок тест" , "Имя : "+icon_prefix + "\n Телефон: " + icon_telephone + "\n Что интересует : "+ call_theme_select , "pbezpekamanager@mail.ru", "pbezpeka@mail.ru");
+    MailSender.getInstance().send("Обратный звонок" , "Имя : "+icon_prefix + "\n Телефон: " + icon_telephone + "\n Что интересует : "+ call_theme_select , "pbezpekamanager@mail.ru", "pbezpekamanager@mail.ru");
 
 
 }
