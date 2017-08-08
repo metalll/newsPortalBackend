@@ -59,12 +59,18 @@ public class DBNews {
 
     }
 
-
+    public void Add(News banner) {
+        try {
+            dao.create(banner);
+            dao.getConnectionSource().close();
+        }catch (Exception e){  }
+    }
 
     //CRUD
     public void AddOrUpdate(News banner) {
         try {
             dao.createOrUpdate(banner);
+          dao.getConnectionSource().close();
         }catch (Exception e){  }
     }
 
@@ -75,12 +81,6 @@ public class DBNews {
             dao.getConnectionSource().close();
 
 
-            for (News item : list) {
-                String img = item.getImage();
-                String imgLink = NSDConstats.HOST + "/file?key=" + img;
-                item.setImage(imgLink);
-
-            }
 
             return list;
 
@@ -92,10 +92,22 @@ public class DBNews {
         }
     }
 
+    public News QueryForID(String id){
+        News retVal = null;
+        try {
+            retVal = dao.queryForId(id);
+            dao.getConnectionSource().close();
+        }catch (Exception e){
+
+        }
+
+        return retVal;
+    }
 
     public void DeleteForID(int id){
         try {
             dao.deleteById(String.valueOf(id));
+            dao.getConnectionSource().close();
         }catch (Exception e){
 
         }
@@ -104,6 +116,7 @@ public class DBNews {
     public void DeleteForID(String id) { //simple override
         try {
             dao.deleteById(id);
+            dao.getConnectionSource().close();
         }catch (Exception e){
 
         }

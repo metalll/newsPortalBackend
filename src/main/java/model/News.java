@@ -13,8 +13,10 @@ public class News {
 
     @DatabaseField(generatedId = true)
     private int id;
+
     @DatabaseField
-    private String type; //HOT||NEW||SIMPLE
+    private String dataOfAdded;
+
     @DatabaseField
     private String image;
     @DatabaseField
@@ -36,13 +38,6 @@ public class News {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getImage() {
         return image;
@@ -84,5 +79,13 @@ public class News {
 
     public void setHeaderDescription(String headerDescription) {
         this.headerDescription = headerDescription;
+    }
+
+    public String getDataOfAdded() {
+        return dataOfAdded;
+    }
+
+    public void setDataOfAdded(String dataOfAdded) {
+        this.dataOfAdded = dataOfAdded;
     }
 }
