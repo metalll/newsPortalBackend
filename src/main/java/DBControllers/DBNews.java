@@ -5,9 +5,6 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import model.Banners;
-import model.News;
 import model.News;
 
 import java.sql.SQLException;
