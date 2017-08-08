@@ -1,14 +1,12 @@
 package servlet.API;
 
-import sun.net.httpserver.HttpServerImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.UUID;
+
 
 /**
  * Created by nsd on 09.08.17.
