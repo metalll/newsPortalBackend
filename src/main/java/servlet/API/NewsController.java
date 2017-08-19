@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
+
+import static servlet.API.Authorizator.kAuthUser;
+
 /**
  * Created by NSD on 05.03.17.
  */
@@ -60,6 +63,16 @@ public class NewsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        if(req.getSession().getAttribute(kAuthUser)==null){
+
+            resp.setStatus(HttpServletResponse.SC_OK);
+            PrintWriter out = resp.getWriter();
+            out.write("-1");
+            out.flush();
+            out.close();
+
+            return;
+        }
 
         Map<String,String[]> paramMap = req.getParameterMap();
 
@@ -90,22 +103,6 @@ public class NewsController extends HttpServlet {
             id = paramMap.get("id")[0];
         }catch (Exception e){}
 
-//        @DatabaseField(generatedId = true)
-//        private int id;
-//
-//        @DatabaseField
-//        private String dataOfAdded;
-//
-//        @DatabaseField
-//        private String image;
-//        @DatabaseField
-//        private String numberOfViewed;
-//        @DatabaseField
-//        private String headerDescription;
-//        @DatabaseField
-//        private String minimalDescription;
-//        @DatabaseField
-//        private String content;
 
 
         News puttedNews = new News();
@@ -142,6 +139,17 @@ public class NewsController extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        if(req.getSession().getAttribute(kAuthUser)==null){
+
+            resp.setStatus(HttpServletResponse.SC_OK);
+            PrintWriter out = resp.getWriter();
+            out.write("-1");
+            out.flush();
+            out.close();
+
+            return;
+        }
+
         Map<String,String[]> paramMap = req.getParameterMap();
 
         String Id = null;
@@ -152,7 +160,6 @@ public class NewsController extends HttpServlet {
 
 
         }catch (Exception e){
-
 
         }
 
