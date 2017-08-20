@@ -56,10 +56,21 @@ public class DBUser {
         User retVal = null;
         try {
 
-            List<User> tList = dao.queryForEq("login", login);
+            List<User> tList = dao.queryForAll();
 
-            if (tList.size() > 0) {
-                retVal = tList.get(0);
+            if (tList.size() < 0) {
+                retVal = null;
+            }else {
+
+                for(User tUser:tList){
+
+                    if(tUser.getName().equals(login)){
+                        retVal = tUser;
+                        break;
+                    }
+
+                }
+
             }
 
             dao.getConnectionSource().close();
