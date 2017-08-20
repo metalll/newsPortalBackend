@@ -41,6 +41,7 @@ public class NewsController extends HttpServlet {
         }catch (Exception e){
 
         }
+
         Gson gson = new Gson();
         if(Id != null){
             retVal = gson.toJson(DBNews.getInstance().QueryForID(Id));
