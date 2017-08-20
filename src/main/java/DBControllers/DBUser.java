@@ -4,6 +4,7 @@ import NSD.NSDConstats;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.table.TableUtils;
 import model.User;
 
 import java.util.List;
@@ -40,24 +41,29 @@ public class DBUser {
 
         try {
             dao = DaoManager.createDao(new JdbcConnectionSource(NSDConstats.getDBURL()), User.class);
+            if (!dao.isTableExists()) {
+
+                TableUtils.createTable(dao.getConnectionSource(), User.class);
+                dao.getConnectionSource().close();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    public User getUser(String login){
+    public User getUser(String login) {
         User retVal = null;
-        try{
+        try {
 
-            List<User> tList = dao.queryForEq("login",login);
+            List<User> tList = dao.queryForEq("login", login);
 
-            if(tList.size()>0){
+            if (tList.size() > 0) {
                 retVal = tList.get(0);
             }
 
             dao.getConnectionSource().close();
-        }catch (Exception e) {
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
@@ -66,15 +72,15 @@ public class DBUser {
     }
 
 
-    public User getUser(long id){
+    public User getUser(long id) {
 
         User retVal = null;
-        try{
+        try {
 
             retVal = dao.queryForId(String.valueOf(id));
 
             dao.getConnectionSource().close();
-        }catch (Exception e) {
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
