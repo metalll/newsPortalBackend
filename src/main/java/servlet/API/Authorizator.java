@@ -78,6 +78,7 @@ public class Authorizator extends HttpServlet{
             }else {
 
                 request = kBadAuth;
+                operation.operate(request);
                 return;
             }
 
