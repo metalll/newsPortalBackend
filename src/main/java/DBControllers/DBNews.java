@@ -72,21 +72,17 @@ public class DBNews {
     }
 
     public List<News> QueryAll(){
+        List<News> list = null;
         try {
-            System.out.print(dao.toString());
-            List<News> list = dao.queryForAll();
+            list = dao.queryForAll();
             dao.getConnectionSource().close();
-
-
-
-            return list;
-
-
         }
         catch (SQLException e) {
             e.printStackTrace();
-          return new ArrayList<News>();
+          return new ArrayList<>();
         }
+
+        return list;
     }
 
     public News QueryForID(String id){
