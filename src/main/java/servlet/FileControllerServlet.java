@@ -2,6 +2,7 @@ package servlet;
 
 import com.google.gson.Gson;
 import javafx.util.Pair;
+import model.ImageResponceStructure;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -204,10 +205,11 @@ public class FileControllerServlet extends HttpServlet {
 
                 String strResp = "?url=" + EntityUtils.toString(httpResponse.getEntity());
 
-                Pair<String,String>stringStringPair = new Pair<>("location",strResp);
+                ImageResponceStructure respImg = new ImageResponceStructure();
+                respImg.location = strResp;
                 Gson gson = new Gson();
 
-                out.write(gson.toJson(stringStringPair));
+                out.write(gson.toJson(respImg));
                 out.flush();
                 out.close();
 
