@@ -49,6 +49,7 @@ public class FileControllerServlet extends HttpServlet {
         boolean accepted = false;
         Map<String,String[]> paramMap = req.getParameterMap();
         String url=null;
+
         try{
 
             url = paramMap.get("url")[0];
