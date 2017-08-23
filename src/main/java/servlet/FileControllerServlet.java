@@ -199,7 +199,7 @@ public class FileControllerServlet extends HttpServlet {
                 resp.setStatus(HttpServletResponse.SC_OK);
 
 
-                String strResp = "?url=" + EntityUtils.toString(httpResponse.getEntity());
+                String strResp = EntityUtils.toString(httpResponse.getEntity());
 
                 ImageResponceStructure respImg = new ImageResponceStructure();
                 respImg.location = strResp;
