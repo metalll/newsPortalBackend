@@ -1,5 +1,7 @@
 package servlet;
 
+import com.google.gson.Gson;
+import javafx.util.Pair;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -73,11 +75,11 @@ public class FileControllerServlet extends HttpServlet {
             HttpGet httpPost = new HttpGet(url);
             httpPost.addHeader(new Header() {
                 public String getName() {
-                    return "accept";
+                   return "Content-Type";
                 }
 
                 public String getValue() {
-                    return "value";
+                    return "image/png;charset=UTF-8";
                 }
 
                 public HeaderElement[] getElements() throws ParseException {
@@ -108,7 +110,7 @@ public class FileControllerServlet extends HttpServlet {
 
 
 
-
+                        outputStream.flush();
                         outputStream.close();
                     }
 
@@ -202,10 +204,10 @@ public class FileControllerServlet extends HttpServlet {
 
                 String strResp = "?url=" + EntityUtils.toString(httpResponse.getEntity());
 
+                Pair<String,String>stringStringPair = new Pair<>("location",strResp);
+                Gson gson = new Gson();
 
-
-
-                out.write(strResp);
+                out.write(gson.toJson(stringStringPair));
                 out.flush();
                 out.close();
 
