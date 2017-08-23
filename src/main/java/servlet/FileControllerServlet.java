@@ -3,6 +3,7 @@ package servlet;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.IOUtils;
 import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 /**
@@ -60,37 +62,7 @@ public class FileControllerServlet extends HttpServlet {
         }
 
 
-        try {
-            if (!req.getHeader("accept").contains("Basic")){
-
-                PrintWriter out = resp.getWriter();
-                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-                out.print("-1");
-                out.flush();
-                out.close();
-
-                return;
-
-            }else{
-
-                accepted=true;
-            }
-
-        }catch (Exception e){
-
-
-            accepted=false;
-            PrintWriter out = resp.getWriter();
-            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            out.print("-1");
-            out.flush();
-            out.close();
-
-            return;
-
-
-        }
-
+       accepted = true;
 
         if(url!=null&&accepted){
 
@@ -126,12 +98,16 @@ public class FileControllerServlet extends HttpServlet {
 
                         outputStream = resp.getOutputStream();
 
-                        int read = 0;
-                        byte[] bytes = new byte[1024];
+//                        int read = 0;
+//                        byte[] bytes = new byte[1024];
+//
+//                        while ((read = inputStream.read(bytes)) != -1) {
+//                            outputStream.write(bytes, 0, read);
+//                        }
 
-                        while ((read = inputStream.read(bytes)) != -1) {
-                            outputStream.write(bytes, 0, read);
-                        }
+                        String req = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+
+
 
                         outputStream.close();
                     }
