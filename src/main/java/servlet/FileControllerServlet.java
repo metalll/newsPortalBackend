@@ -62,6 +62,7 @@ public class FileControllerServlet extends HttpServlet {
         }
 
 
+
        accepted = true;
 
         if(url!=null&&accepted){
@@ -98,14 +99,13 @@ public class FileControllerServlet extends HttpServlet {
 
                         outputStream = resp.getOutputStream();
 
-//                        int read = 0;
-//                        byte[] bytes = new byte[1024];
-//
-//                        while ((read = inputStream.read(bytes)) != -1) {
-//                            outputStream.write(bytes, 0, read);
-//                        }
+                        int read = 0;
+                        byte[] bytes = new byte[1024];
 
-                        String req = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+                        while ((read = inputStream.read(bytes)) != -1) {
+                            outputStream.write(bytes, 0, read);
+                        }
+
 
 
 
@@ -198,7 +198,14 @@ public class FileControllerServlet extends HttpServlet {
             public HttpResponse handleResponse(HttpResponse httpResponse) throws ClientProtocolException, IOException {
                 PrintWriter out = resp.getWriter();
                 resp.setStatus(HttpServletResponse.SC_OK);
-                out.write(EntityUtils.toString(httpResponse.getEntity()));
+
+
+                String strResp = "?url=" + EntityUtils.toString(httpResponse.getEntity());
+
+
+
+
+                out.write(strResp);
                 out.flush();
                 out.close();
 
