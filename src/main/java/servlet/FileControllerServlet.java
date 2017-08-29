@@ -24,10 +24,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Created by nsd on 23.08.17.
  */
-@WebServlet(name = "File",urlPatterns = "/API/File")
+@WebServlet(name = "File", urlPatterns = "/API/File")
 public class FileControllerServlet extends HttpServlet {
 
 
@@ -48,23 +49,20 @@ public class FileControllerServlet extends HttpServlet {
 
 
         boolean accepted = false;
-        Map<String,String[]> paramMap = req.getParameterMap();
-        String url=null;
+        Map<String, String[]> paramMap = req.getParameterMap();
+        String url = null;
 
-        try{
+        try {
 
             url = paramMap.get("url")[0];
-        }catch (Exception e){
-
+        } catch (Exception e) {
 
 
         }
 
+        accepted = true;
 
-
-       accepted = true;
-
-        if(url!=null&&accepted){
+        if (url != null && accepted) {
 
 
             HttpClient httpclient = new DefaultHttpClient();
@@ -72,7 +70,7 @@ public class FileControllerServlet extends HttpServlet {
             HttpGet httpPost = new HttpGet(url);
             httpPost.addHeader(new Header() {
                 public String getName() {
-                   return "Content-Type";
+                    return "Content-Type";
                 }
 
                 public String getValue() {
@@ -83,7 +81,6 @@ public class FileControllerServlet extends HttpServlet {
                     return new HeaderElement[0];
                 }
             });
-
 
 
             final HttpResponse response = httpclient.execute(httpPost, new ResponseHandler<HttpResponse>() {
@@ -104,7 +101,6 @@ public class FileControllerServlet extends HttpServlet {
                         while ((read = inputStream.read(bytes)) != -1) {
                             outputStream.write(bytes, 0, read);
                         }
-
 
 
                         outputStream.flush();
@@ -217,4 +213,3 @@ public class FileControllerServlet extends HttpServlet {
 
     }
 }
-
